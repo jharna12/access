@@ -1,25 +1,23 @@
-#include<bits/stdc++.h>
-
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<string>
+#include<iterator>
+#include<map>
 using namespace std;
 
 int main(){
-    string n1, n2;
-    cin>>n1>>n2;
-
-    string min_string = min(n1, n2);
-    string max_string = max(n1, n2);
-    int i=0, c=0;
-
-    for(i=0; i<min_string.length(); i++){
-        if(n1[i] == n2[i])
-            continue;
-        c += abs(n1[i] - n2[i]);
+    int n, temps;
+    cin>>n;
+    map<int,int> m;
+    for(int i=0; i<n; i++){
+        cin>>temps;
+        if(m.find(temps) == m.end())
+            m.insert(make_pair(temps, 1));
+        else
+            m.erase(temps);
     }
-
-    while(i<max_string.length()){
-        c += max_string[i] - 96;
-        i++;
-    }
-    cout<<c;
+    map<int,int>::iterator it = m.begin();
+    cout << it->first;
     return 0;
 }

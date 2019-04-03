@@ -1,9 +1,26 @@
-// i haven't done this as input and output both are same
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int a;
-    cin>>a;
-    cout<<a<<endl;
+    int n, temp;
+    cin>>n;
+    vector<int> vec(n);
+    for(int i=0; i<n; i++){
+        cin>>vec[i];
+    }
+    sort(vec.begin(), vec.end());
+    int min = INT_MAX;
+    int a,b;
+    for(int i=0; i<n-1; i++){
+        for(int j=i+1; j<n; j++){
+            temp = vec[j] + vec[i];
+            if(temp<min && temp>=0){
+                min = temp;
+                a=vec[j];
+                b=vec[i];
+            }
+        }
+    }
+    cout<<a<<" "<<b;
+    return 0;
 }

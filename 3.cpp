@@ -1,16 +1,18 @@
-#include<bits/stdc++.h>
-
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<string>
+#include<iterator>
+#include<set>
 using namespace std;
 
 int main(){
-    string n1, n2;
-    cin>>n1>>n2;
-    int c = max(n1.length(), n2.length()) - min(n1.length(), n2.length());
-    for(int i=0; i<min(n1.length(), n2.length()); i++){
-        if(n1[i] == n2[i])
-            continue;
-        c++;
+    int n, temps;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        cin>>temps;
+        if(temps==i)
+            cout<<temps<<" ";
     }
-    cout<<c;
     return 0;
 }

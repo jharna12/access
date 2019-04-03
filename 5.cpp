@@ -1,15 +1,18 @@
 #include<bits/stdc++.h>
-
 using namespace std;
 
+int numberOfWayss( string s, int l, int r){
+    if(l==r)
+        return 1;
+    int extra = 0;
+    if(l+1<r && s[l]!='0' && stoi(s.substr(l, 2)) <= 26)
+        extra = numberOfWayss(s, l+2, r);
+    return extra + numberOfWayss(s, l+1, r);
+}
+
 int main(){
-    long long int n,a,b;
-    cin>>n>>a>>b;
-    if((n/2)%(a+b)==0 && n%2==0)
-        cout<<"YES";
-    else if(a==b && (n/2)%a==0 && n%2==0)
-        cout<<"YES";
-    else
-        cout<<"NO";
+    string n;
+    cin>>n;
+    cout<<numberOfWayss(n, 0, n.size());
     return 0;
 }

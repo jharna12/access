@@ -1,25 +1,28 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<string>
+#include<iterator>
+#include<map>
 using namespace std;
 
 int main(){
-    int n, count = 0;
+    int n, temps;
     cin>>n;
-    vector<int> vec(n);
+    map<int,int> m;
     for(int i=0; i<n; i++){
-        cin>>vec[i];
-    }
-
-    for(int i=0; i<n-2; i++){
-        for(int j=i+1; j<n-1; j++){
-            if(vec[i] < vec[j]){
-                for(int k=j+1; k<n; k++){
-                    if(vec[j] < vec[k]){
-                        count++;
-                    }
-                }
-            }
+        cin>>temps;
+        if(m.find(temps) == m.end())
+            m.insert(make_pair(temps, 1));
+        else{
+            m.clear();
+            break;
         }
     }
-    cout<<count;
+    if(m.size()!=0){
+        cout<<"unique";
+    }else{
+        cout<<temps;
+    }
     return 0;
 }

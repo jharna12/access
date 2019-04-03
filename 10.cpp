@@ -1,22 +1,29 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n;
-    long int sum = 0;
-    cin>>n;
-    vector<int> vec(n);
-    vector<long int> sum(n+1);
-    sum[0] = 0;
+    int n, m;
+    cin>>n>>m;
+    vector<int> a(n);
+    vector<int> b(m);
     for(int i=0; i<n; i++){
-        cin>>vec[i];
-        sum[i+1] = 0;
-        for(int j=0; j<i; j++){
-            if(vec[i]>vec[j])
-                sum[i+1] += vec[j];
-        }
-        sum += sum[i+1];
+        cin>>a[i];
     }
-    cout<<sum<<endl;
+    sort(a.begin(), a.end());
+    for(int i=0; i<m; i++){
+        cin>>b[i];
+    }
+    sort(b.begin(), b.end());
+    int aa=0, i=0;
+    while(aa<m && i<n){
+        if(b[aa]==a[i]){
+            aa++;
+        }
+        i++;
+    }
+    if(aa==m)
+        cout<<"YES";
+    else
+        cout<<"NO";
     return 0;
 }
